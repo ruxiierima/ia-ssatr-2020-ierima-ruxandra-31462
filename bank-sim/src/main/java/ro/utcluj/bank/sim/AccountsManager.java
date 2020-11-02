@@ -47,7 +47,8 @@ public class AccountsManager {
        return all;
    }
     boolean transfer(String fromOwnerName, String toOwnerName, int amount){
-         int actions=0;
+
+        int actions=0;
          for(BankAccount a: accounts){ 
             if (a != null) {
             if(a.getOwner().equals(fromOwnerName)){
@@ -74,5 +75,6 @@ public class AccountsManager {
          
          
          return false;
+
     }
 }
