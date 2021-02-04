@@ -37,13 +37,23 @@ public class AtmNetConnector {
             PrintWriter fluxOut = new PrintWriter(new OutputStreamWriter(s.getOutputStream()),true);
             //......
             String line = "";
-            //while(!line.equals("close connection")){
+            String resp=fluxIn.readLine();
+            System.out.println(resp);
+            if(resp.equals("CREATE")){
+
                 String name = fluxIn.readLine();
                 String cardNumber = fluxIn.readLine();
                 double sold = Double.parseDouble(fluxIn.readLine());
                 String result = aService.handleNameRegister(name,cardNumber,sold);
                 fluxOut.println(result);
-            //}
+
+            }
+            else if(resp.equals("DELETE")){
+            String name = fluxIn.readLine();
+            String result =aService.deletEntity(name);
+            fluxOut.println(result);
+        }
+
 
             s.close();
         }

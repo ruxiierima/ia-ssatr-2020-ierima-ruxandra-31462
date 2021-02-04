@@ -55,10 +55,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="tResponse" min="-2" pref="334" max="-2" attributes="0"/>
+                      <Component id="tResponse" min="-2" pref="427" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="182" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="89" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,10 +96,10 @@
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tResponse" alignment="3" min="-2" pref="173" max="-2" attributes="0"/>
+                  <Component id="tResponse" alignment="3" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="125" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

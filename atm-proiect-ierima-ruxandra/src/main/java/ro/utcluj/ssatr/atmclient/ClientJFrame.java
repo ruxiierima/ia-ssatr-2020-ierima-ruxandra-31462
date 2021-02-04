@@ -105,8 +105,8 @@ public class ClientJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(36, 36, 36)
-                        .addComponent(tResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 182, Short.MAX_VALUE))
+                        .addComponent(tResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,9 +135,9 @@ public class ClientJFrame extends javax.swing.JFrame {
                     .addComponent(tNameDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,7 +149,7 @@ public class ClientJFrame extends javax.swing.JFrame {
             Socket s = new Socket("127.0.0.1", 4050);
             BufferedReader fluxIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
             PrintWriter fluxOut = new PrintWriter(new OutputStreamWriter(s.getOutputStream()),true);
-            
+            fluxOut.println("CREATE");
             fluxOut.println(tName.getText());
             fluxOut.println(tCardNumber.getText());
             fluxOut.println(tSold.getText());
@@ -167,7 +167,7 @@ public class ClientJFrame extends javax.swing.JFrame {
             Socket s = new Socket("127.0.0.1", 4050);
             BufferedReader fluxIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
             PrintWriter fluxOut = new PrintWriter(new OutputStreamWriter(s.getOutputStream()),true);
-            
+            fluxOut.println("DELETE");
             fluxOut.println(tNameDelete.getText());
             tResponse.setText(fluxIn.readLine());
             

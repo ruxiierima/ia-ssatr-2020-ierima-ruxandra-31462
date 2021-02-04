@@ -53,19 +53,17 @@ public class DBAccess {
         }           
     }
     
-    public void deleteByPlateNumber(String plateNumber) throws SQLException{
+    public void deleteByName(String name) throws SQLException{
         Statement s = conn.createStatement();
-        s.executeUpdate("DELETE FROM CARACCESS WHERE PLATENUMBER='"+plateNumber+"'");        
+        s.executeUpdate("DELETE FROM BANKCARD WHERE NAME='"+name+"'");        
     }
     
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         DBAccess db = new DBAccess();
-        //db.insertCar(new CarAccessEntity("CJ 89 TTT", System.currentTimeMillis()));
-        //db.insertCar(new CarAccessEntity("CJ 22 ABC", System.currentTimeMillis()));
         PersonRegisterEntity result = db.findByName("Pop David");
         System.out.println(result);
         if(result!=null){
-            db.deleteByPlateNumber(result.getName());
+            db.deleteByName(result.getName());
             System.out.println("Entry deleted!");
         }else{
             System.out.println("Entry not found!");
