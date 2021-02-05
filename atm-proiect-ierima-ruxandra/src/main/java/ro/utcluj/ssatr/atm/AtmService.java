@@ -16,10 +16,10 @@ public class AtmService {
     }
   
     public synchronized String handleNameRegister(String name,String cardNumber, double sold) throws SQLException{
-        PersonRegisterEntity c = db.findByName(name);
+        BankAccount c = db.findByName(name);
         
         if(c==null){
-            PersonRegisterEntity p = new PersonRegisterEntity(name, sold,cardNumber);
+            BankAccount p = new BankAccount(name, sold,cardNumber);
             db.insertRegister(p);
             return "Bank Account created, name: "+p.getName()+ " cardNumber: "+ p.getCardNumber()+" sold: "+ p.getSold();
         }
@@ -36,7 +36,7 @@ public class AtmService {
         }
     }
     public synchronized String deletEntity(String name) throws SQLException{
-           PersonRegisterEntity c = db.findByName(name);
+           BankAccount c = db.findByName(name);
            if(c!=null){
            db.deleteByName(name);
            return "Bank account DELETED";
@@ -48,7 +48,7 @@ public class AtmService {
     }
     
      public synchronized String updateSold(String name, double sold, boolean add_money) throws SQLException{
-           PersonRegisterEntity c = db.findByName(name);
+           BankAccount c = db.findByName(name);
            if(c!=null){
                double currentSold=c.getSold();
             if(add_money){

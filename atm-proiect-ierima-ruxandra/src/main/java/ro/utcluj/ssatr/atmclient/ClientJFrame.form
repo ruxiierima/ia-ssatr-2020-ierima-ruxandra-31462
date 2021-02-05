@@ -104,7 +104,7 @@
                       <Component id="tResponse" min="-2" pref="530" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="228" max="32767" attributes="0"/>
+              <EmptySpace pref="238" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
@@ -286,7 +286,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Delete banck account by name:"/>
+        <Property name="text" type="java.lang.String" value="Delete bank account by name:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">

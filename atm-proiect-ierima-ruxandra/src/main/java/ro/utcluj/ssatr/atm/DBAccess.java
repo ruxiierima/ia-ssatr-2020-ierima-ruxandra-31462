@@ -20,7 +20,7 @@ public class DBAccess {
          conn = DriverManager.getConnection("jdbc:derby://localhost/atm;create=false","APP","APP");
     }
    
-    public void insertRegister(PersonRegisterEntity e) throws SQLException{
+    public void insertRegister(BankAccount e) throws SQLException{
         Statement s = conn.createStatement();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO BANKCARD " 
     + "(NAME, CARDNUMBER, SOLD) VALUES (?, ?, ?)");
@@ -32,7 +32,7 @@ public class DBAccess {
         s.close();
     }
     
-    public void updateRegister(PersonRegisterEntity e) throws SQLException{
+    public void updateRegister(BankAccount e) throws SQLException{
         Statement s = conn.createStatement();
         PreparedStatement pstmt = conn.prepareStatement("UPDATE BANKCARD "+ "SET CARDNUMBER = ?, SOLD=?"+"WHERE NAME = ?");
         pstmt.setString(1, e.getCardNumber());
@@ -42,7 +42,7 @@ public class DBAccess {
         s.close();
     }
     
-    public void updateSold(PersonRegisterEntity e) throws SQLException{
+    public void updateSold(BankAccount e) throws SQLException{
         Statement s = conn.createStatement();
         PreparedStatement pstmt = conn.prepareStatement("UPDATE BANKCARD "+ "SET SOLD=?"+"WHERE NAME = ?");
         pstmt.setDouble(1, e.getSold());
@@ -51,11 +51,11 @@ public class DBAccess {
         s.close();
     }
     
-    public PersonRegisterEntity findByName(String name) throws SQLException{
+    public BankAccount findByName(String name) throws SQLException{
         Statement s = conn.createStatement();
         ResultSet rs = s.executeQuery("SELECT * FROM BANKCARD WHERE NAME='"+name+"'");
         if(rs.next()){
-            return new PersonRegisterEntity(rs.getString("name"), rs.getDouble("sold"), rs.getString("cardNumber"));
+            return new BankAccount(rs.getString("name"), rs.getDouble("sold"), rs.getString("cardNumber"));
         }else{
             return null;
         }           
@@ -69,7 +69,7 @@ public class DBAccess {
     
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         DBAccess db = new DBAccess();
-        PersonRegisterEntity result = db.findByName("Pop David");
+        BankAccount result = db.findByName("Pop David");
         System.out.println(result);
         if(result!=null){
             db.deleteByName(result.getName());

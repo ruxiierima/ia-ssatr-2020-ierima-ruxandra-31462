@@ -5,12 +5,16 @@
  */
 package ro.utcluj.ssatr.atm;
 
-public class PersonRegisterEntity {
+/**
+ *
+ * @author ierimaruxi
+ */
+public class BankAccount {
     private String name;
-    private double sold;
     private String cardNumber;
+    private double sold;
 
-    public PersonRegisterEntity(String name, double sold,String cardNumber) {
+    public BankAccount(String name, double sold,String cardNumber) {
         this.name = name;
         this.sold = sold;
         this.cardNumber = cardNumber;
@@ -42,6 +46,6 @@ public class PersonRegisterEntity {
 
     @Override
     public String toString() {
-        return "PersonRegisterEntity{" + "name=" + name + ", cardNumber=" + cardNumber + ", sold=" + sold + '}';
+        return "BankAccount{" + "name=" + name + ", cardNumber=" + cardNumber + ", sold=" + sold + '}';
     }
 }

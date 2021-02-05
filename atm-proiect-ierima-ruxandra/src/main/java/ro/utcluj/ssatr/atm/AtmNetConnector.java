@@ -67,9 +67,7 @@ public class AtmNetConnector {
                     String result3 =aService.updateSold(name3,sold3,false);
                     fluxOut.println(result3);
                     break;
-                    
-                
-    
+
         }
 
 
