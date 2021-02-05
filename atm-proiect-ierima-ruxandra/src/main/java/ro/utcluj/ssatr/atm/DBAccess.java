@@ -34,11 +34,10 @@ public class DBAccess {
     
     public void updateRegister(PersonRegisterEntity e) throws SQLException{
         Statement s = conn.createStatement();
-        String query = "UPDATE BANKCARD "+ "SET CARDNUMBER = ?, SOLD=?"+"WHERE NAME = ?";
-        PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setString(1, e.getName());
-        pstmt.setString(2, e.getCardNumber());
-        pstmt.setDouble(3, e.getSold());
+        PreparedStatement pstmt = conn.prepareStatement("UPDATE BANKCARD "+ "SET CARDNUMBER = ?, SOLD=?"+"WHERE NAME = ?");
+        pstmt.setString(1, e.getCardNumber());
+        pstmt.setDouble(2, e.getSold());
+        pstmt.setString(3, e.getName());
         pstmt.executeUpdate();
         s.close();
     }
