@@ -36,22 +36,40 @@ public class AtmNetConnector {
             BufferedReader fluxIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
             PrintWriter fluxOut = new PrintWriter(new OutputStreamWriter(s.getOutputStream()),true);
             //......
-            String line = "";
+ 
             String resp=fluxIn.readLine();
             System.out.println(resp);
-            if(resp.equals("CREATE")){
+            switch(resp){
+                case "CREATE":
+                    String name = fluxIn.readLine();
+                    String cardNumber = fluxIn.readLine();
+                    double sold = Double.parseDouble(fluxIn.readLine());
+                    String result = aService.handleNameRegister(name,cardNumber,sold);
+                    fluxOut.println(result);
+                    break;
 
-                String name = fluxIn.readLine();
-                String cardNumber = fluxIn.readLine();
-                double sold = Double.parseDouble(fluxIn.readLine());
-                String result = aService.handleNameRegister(name,cardNumber,sold);
-                fluxOut.println(result);
-
-            }
-            else if(resp.equals("DELETE")){
-            String name = fluxIn.readLine();
-            String result =aService.deletEntity(name);
-            fluxOut.println(result);
+                case "DELETE":
+                    String name2 = fluxIn.readLine();
+                    String result2 =aService.deletEntity(name2);
+                    fluxOut.println(result2);
+                    break;
+                
+                case "ADD":
+                   String name4 = fluxIn.readLine();
+                   double sold4 = Double.parseDouble(fluxIn.readLine());
+                   String result4 =aService.updateSold(name4,sold4,true);
+                   fluxOut.println(result4);   
+                   break;
+                    
+                case "EXTRACT":
+                    String name3 = fluxIn.readLine();
+                    double sold3 = Double.parseDouble(fluxIn.readLine());
+                    String result3 =aService.updateSold(name3,sold3,false);
+                    fluxOut.println(result3);
+                    break;
+                    
+                
+    
         }
 
 

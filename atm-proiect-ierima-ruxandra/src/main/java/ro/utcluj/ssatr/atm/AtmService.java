@@ -21,7 +21,7 @@ public class AtmService {
         if(c==null){
             PersonRegisterEntity p = new PersonRegisterEntity(name, sold,cardNumber);
             db.insertRegister(p);
-            return "New person entry: "+p.getName()+ " cardNumber: "+ p.getCardNumber()+" sold"+ p.getSold();
+            return "Bank Account created, name: "+p.getName()+ " cardNumber: "+ p.getCardNumber()+" sold: "+ p.getSold();
         }
         if (!c.getCardNumber().equals(cardNumber) || c.getSold()!=sold){
               c.setCardNumber(cardNumber);
@@ -36,10 +36,42 @@ public class AtmService {
         }
     }
     public synchronized String deletEntity(String name) throws SQLException{
+           PersonRegisterEntity c = db.findByName(name);
+           if(c!=null){
            db.deleteByName(name);
            return "Bank account DELETED";
+           }
+           else{
+           return " Banck account with name: "+name+" does NOT exist!";
+           }
         
     }
+    
+     public synchronized String updateSold(String name, double sold, boolean add_money) throws SQLException{
+           PersonRegisterEntity c = db.findByName(name);
+           if(c!=null){
+               double currentSold=c.getSold();
+            if(add_money){
+                c.setSold(currentSold+sold);
+            }
+            else{
+                if(sold<=currentSold){
+                    c.setSold(currentSold-sold);
+                }
+                else{
+                    return "NOT ENOUGH MONEY! Current Sold:"+ currentSold;
+                        }
+            }
+           db.updateSold(c);
+           return "SOLD UPDATED";
+           }
+           else{
+           return "BANK ACCOUNT NOT REGISTERED!";
+           }
+        
+    }
+    
+    
     
     
     public static void main(String[] args) throws Exception {

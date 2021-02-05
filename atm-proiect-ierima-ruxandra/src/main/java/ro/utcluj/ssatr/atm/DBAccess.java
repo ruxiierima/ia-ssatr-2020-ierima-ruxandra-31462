@@ -42,6 +42,15 @@ public class DBAccess {
         s.close();
     }
     
+    public void updateSold(PersonRegisterEntity e) throws SQLException{
+        Statement s = conn.createStatement();
+        PreparedStatement pstmt = conn.prepareStatement("UPDATE BANKCARD "+ "SET SOLD=?"+"WHERE NAME = ?");
+        pstmt.setDouble(1, e.getSold());
+        pstmt.setString(2, e.getName());
+        pstmt.executeUpdate();
+        s.close();
+    }
+    
     public PersonRegisterEntity findByName(String name) throws SQLException{
         Statement s = conn.createStatement();
         ResultSet rs = s.executeQuery("SELECT * FROM BANKCARD WHERE NAME='"+name+"'");
@@ -54,7 +63,8 @@ public class DBAccess {
     
     public void deleteByName(String name) throws SQLException{
         Statement s = conn.createStatement();
-        s.executeUpdate("DELETE FROM BANKCARD WHERE NAME='"+name+"'");        
+        s.executeUpdate("DELETE FROM BANKCARD WHERE NAME='"+name+"'");   
+        s.close();
     }
     
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
